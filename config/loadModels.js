@@ -18,7 +18,9 @@ const logger = require('./logger')
 
   async function syncModels() {
     try {
+      console.log("syncing bankaccount table");
       await BankAccount.sync();
+      console.log('synced bankaccount table');
       await Company.sync();
       await User.sync();
       await Brand.sync();

@@ -2,14 +2,27 @@ const { Sequelize } = require('sequelize');
 
 
 
-database_name = 'InventoryManagement'
-database_username = 'root'
-database_password = 'kondas'
+// database_name = 'InventoryManagement'
+// database_username = 'root'
+// database_password = 'kondas'
+// const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(database_name, database_username, database_password, {
-    host: 'localhost',
-    dialect: 'mysql'
-  });
+const sequelize = new Sequelize(
+  process.env.MYSQL_DATABASE,
+  process.env.MYSQL_USER,
+  process.env.MYSQL_PASSWORD,
+  {
+    host: 'database', // This should match the service name in the docker-compose.yml
+    dialect: 'mysql',
+  }
+);
+
+// module.exports = sequelize;
+
+// const sequelize = new Sequelize(database_name, database_username, database_password, {
+//     host: 'localhost',
+//     dialect: 'mysql'
+//   });
 
 
   try {

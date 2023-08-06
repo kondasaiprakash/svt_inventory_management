@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      MYSQL_ROOT_PASSWORD: kondas
+      MYSQL_DATABASE: InventoryManagement
+      MYSQL_USER: kondas
+      MYSQL_PASSWORD: kondas
+    depends_on:
+      - database
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: kondas
+      MYSQL_DATABASE: InventoryManagement
+      MYSQL_USER: kondas
+      MYSQL_PASSWORD: kondas
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
